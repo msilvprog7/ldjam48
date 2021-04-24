@@ -9,5 +9,7 @@ Our LD Game Jam 48 project in Unity
   - [Unity Code Snippets](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)
   - [Debugger for Unity](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug)
 
-### Delequesce Readme Edit
-Hey what's up 
+## Edit Quests
+
+Open `Assets\Scripts\Quests.xlsx` in Excel.
+Save as `Assets\Scripts\Quests.txt` (Tab-delimited).
