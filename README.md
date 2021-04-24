@@ -1,6 +1,6 @@
 # ldjam48
 
-Our LD Game Jam 48 project in Unity
+Our LD Game Jam 48 project in Unity. This theme is Deeper and Deeper.
 
 ## Install
 
