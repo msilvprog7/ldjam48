@@ -5,8 +5,14 @@ using UnityEngine;
 public class StartButtonBehavior : MonoBehaviour
 {
    public GameObject firstQuestScreen;
+   public GameObject mainQuestScreen;
+   public GameObject InventoryPanel;
+   public GameObject QuestLogPanel;
 
    public void OnButtonPress(){
       firstQuestScreen.SetActive(false);
+      mainQuestScreen.SetActive(true);
+      InventoryPanel.SetActive(true);
+      QuestLogPanel.SetActive(true);
    }
 }

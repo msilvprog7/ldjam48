@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     public Inventory inventory;
     public QuestLog questLog;
-    public bool questRunning {get; } = true; // Let's you know if a quest is active
+    public bool questRunning {get; } = false; // Let's you know if a quest is active
 
     // Reading Quest List
     public List<Quest> masterQuestList { get; } = new List<Quest>();
