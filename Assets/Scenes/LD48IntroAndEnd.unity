@@ -1862,6 +1862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e342c68e0d6fd3c42ae3b0dc7799edf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotHolder: {fileID: 1204304250}
+  uI_Inventory: {fileID: 0}
+  MainQuestScreen: {fileID: 1204008080}
 --- !u!4 &466017372
 Transform:
   m_ObjectHideFlags: 0
@@ -1906,7 +1909,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1204008081}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2086,10 +2089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b4e33f5cc3d07499f34d4b5024c921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTitle: {fileID: 470989038}
-  questDialogue: {fileID: 1885492865}
-  questButton: {fileID: 1937574517}
-  questButtonText: {fileID: 1806043060}
+  MainQuestScreen: {fileID: 0}
   successProbBadItem: 0.5
   successProbNoItem: 0.25
 --- !u!114 &533309871
@@ -2773,7 +2773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1003998501
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2781,13 +2781,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003998500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 900991689}
-  m_Father: {fileID: 1624552196}
-  m_RootOrder: 2
+  m_Father: {fileID: 1204008081}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2837,19 +2837,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1003998503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartButtonBehavior, Assembly-CSharp
-        m_MethodName: OnButtonPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1003998503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2900,6 +2888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e78aa9fb2e704fa88b886bb1acea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
 --- !u!1 &1203608093
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,6 +3058,7 @@ GameObject:
   - component: {fileID: 1204008081}
   - component: {fileID: 1204008083}
   - component: {fileID: 1204008082}
+  - component: {fileID: 1204008084}
   m_Layer: 5
   m_Name: MainQuestScreen
   m_TagString: Untagged
@@ -3087,6 +3077,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1003998501}
+  - {fileID: 2074651378}
   - {fileID: 470989037}
   - {fileID: 1885492864}
   - {fileID: 1937574516}
@@ -3137,6 +3129,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204008080}
   m_CullTransparentMesh: 1
+--- !u!114 &1204008084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204008080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19bef4b9aa2df742a71b83a5b896e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  questTitle: {fileID: 470989038}
+  questDialogue: {fileID: 1885492865}
+  questButton: {fileID: 1937574517}
+  questButtonText: {fileID: 1806043060}
+  NoItemButton: {fileID: 1003998502}
+  ItemButton: {fileID: 2074651379}
 --- !u!1 &1204304250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,7 +3702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1413218357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3865,7 +3876,7 @@ Transform:
   m_LocalScale: {x: 1928, y: 1080, z: 1}
   m_Children: []
   m_Father: {fileID: 1624552196}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1487386821
 SpriteRenderer:
@@ -4042,6 +4053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstQuestScreen: {fileID: 1288576152}
   mainQuestScreen: {fileID: 1204008080}
+  InventoryPanel: {fileID: 2061471297}
+  QuestLogPanel: {fileID: 1413218356}
 --- !u!1 &1607832243
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,9 +4302,7 @@ RectTransform:
   m_Children:
   - {fileID: 1221689984}
   - {fileID: 197380482}
-  - {fileID: 1003998501}
   - {fileID: 1487386820}
-  - {fileID: 2074651378}
   m_Father: {fileID: 719880370}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5110,7 +5121,7 @@ Transform:
   m_LocalScale: {x: 1928, y: 1080, z: 1}
   m_Children: []
   m_Father: {fileID: 1204008081}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1843195220
 SpriteRenderer:
@@ -5193,7 +5204,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1204008081}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5254,6 +5265,7 @@ GameObject:
   - component: {fileID: 1937574519}
   - component: {fileID: 1937574518}
   - component: {fileID: 1937574517}
+  - component: {fileID: 1937574520}
   m_Layer: 5
   m_Name: QuestButton
   m_TagString: Untagged
@@ -5274,7 +5286,7 @@ RectTransform:
   m_Children:
   - {fileID: 1806043059}
   m_Father: {fileID: 1204008081}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5324,19 +5336,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1937574518}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartButtonBehavior, Assembly-CSharp
-        m_MethodName: OnButtonPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1937574518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5375,6 +5375,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937574515}
   m_CullTransparentMesh: 1
+--- !u!114 &1937574520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937574515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746568e7648f4b144b5a792a44379b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainQuestScreen: {fileID: 1204008080}
 --- !u!1 &2061471297
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,7 +5405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2061471298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5471,7 +5484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2074651378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5479,13 +5492,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074651377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 147083087}
-  m_Father: {fileID: 1624552196}
-  m_RootOrder: 4
+  m_Father: {fileID: 1204008081}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5535,19 +5548,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2074651380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartButtonBehavior, Assembly-CSharp
-        m_MethodName: OnButtonPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2074651380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5598,6 +5599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e78aa9fb2e704fa88b886bb1acea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
 --- !u!1 &2100494576
 GameObject:
   m_ObjectHideFlags: 0

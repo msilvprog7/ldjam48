@@ -31,4 +31,14 @@ public class UI_Inventory : MonoBehaviour
             itemSlotRectTransform.gameObject.SetActive(true);
         }
     }
+
+    public void enableSelection()
+    {
+        ItemSlotHandler[] allChildren = gameObject.GetComponentsInChildren<ItemSlotHandler>();
+        // Loop through ItemSlotTemplate Children and enable
+        foreach(ItemSlotHandler ish in allChildren)
+        {
+            ish.toggleButtonState(true);
+        }
+    }
 }
