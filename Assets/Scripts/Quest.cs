@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using System.IO;
 using System.Linq;
-using UnityEngine;
 
 public class Quest
 {
@@ -43,40 +43,5 @@ public class Quest
         return string.Join(
             "\n",
             properties.Select(p => $"{p.Name}: {p.GetValue(this)}"));
-    }
-}
-
-public class Quests : MonoBehaviour
-{
-    public List<Quest> Value { get; } = new List<Quest>();
-
-    private static string Filename = "Assets\\Scripts\\Quests.txt";
-    private static char Delimiter = '\t';
-    private static char ListDelimiter = ',';
-    private static int HeaderLines = 2;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log($"Reading quests, Filename: {Filename}, Delimiter: {Delimiter}, ListDelimiter: {ListDelimiter}, HeaderLines: {HeaderLines}");
-        this.Value.Clear();
-        foreach (var line in File.ReadAllLines(Filename).Skip(HeaderLines))
-        {
-            var row = line.Split(Delimiter);
-            var quest = new Quest(row, ListDelimiter);
-            this.Value.Add(quest);
-        }
-        
-        Debug.Log($"Found {this.Value.Count} Quests");
-        foreach (var quest in this.Value) 
-        {
-            Debug.Log(quest);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
