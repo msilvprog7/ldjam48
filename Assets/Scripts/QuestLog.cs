@@ -10,7 +10,7 @@ public class QuestLog
     {
         questList = new List<Quest>();
         // Add first quest from Quests object
-        Debug.Log(questMasterList.Count);
+        //Debug.Log(questMasterList.Count);
         AddQuest(questMasterList[0]);
         AddQuest(questMasterList[1]);
 

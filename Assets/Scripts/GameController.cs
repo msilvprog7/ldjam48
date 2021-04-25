@@ -6,10 +6,9 @@ using System.Linq;
 
 public class GameController : MonoBehaviour
 {
-    private Inventory inventory;
-    private QuestLog questLog;
-    [SerializeField] private UI_Inventory uiInventory;
-    [SerializeField] private UI_Quests uiQuests;
+    public Inventory inventory;
+    public QuestLog questLog;
+    public bool questRunning {get; } = true; // Let's you know if a quest is active
 
     // Reading Quest List
     public List<Quest> masterQuestList { get; } = new List<Quest>();
@@ -21,12 +20,14 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Generate Inventory Object
         inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+
+        // Read in All Quests from CSV
         readQuests();
-        //Debug.Log(questMaster.Value.Count);
+
+        // Generate QuestLog Object
         questLog = new QuestLog(masterQuestList);
-        uiQuests.SetQuestLog(questLog);
     }
 
     void readQuests()
@@ -39,6 +40,5 @@ public class GameController : MonoBehaviour
             masterQuestList.Add(quest);
         }
     }
-
 }
 

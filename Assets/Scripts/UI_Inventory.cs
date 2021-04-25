@@ -2,46 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory;
-    private Transform itemSlotTemplate;
-    private Transform SlotHolder;
+    private GameController gameController;
+    private Transform ItemSlotTemplate;
 
-    public void SetInventory(Inventory inventory)
-    {
-        this.inventory = inventory;
-        RefreshInventory();
-    }
     // Start is called before the first frame update
     void Start()
     {
-        //originalPosition = transform.localPosition;
-        SlotHolder = GameObject.Find("SlotHolder").transform;
-        if (SlotHolder != null)
-        {
-            //Debug.Log("SlotHolder Found");
-            itemSlotTemplate = SlotHolder.Find("ItemSlotTemplate");
-        }
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        ItemSlotTemplate = gameObject.transform.Find("ItemSlotTemplate");
+
+        RefreshInventory();
     }
 
     private void RefreshInventory()
     {
-        foreach (Item item in inventory.GetItemList())
+        foreach (Item item in gameController.inventory.GetItemList())
         {
             // Create new Item Object Panel in UI 
-            var ist = Instantiate(itemSlotTemplate, SlotHolder);
+            var ist = Instantiate(ItemSlotTemplate, gameObject.transform);
+            ist.GetComponent<ItemSlotHandler>().setItemReference(item);
             var textObject = ist.transform.GetChild(2).gameObject;
             textObject.GetComponent<TMPro.TextMeshProUGUI>().text = item.name;
             RectTransform itemSlotRectTransform = ist.GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
