@@ -70,10 +70,10 @@ public class GameController : MonoBehaviour
             Debug.Log("No Item Used");
             if (Random.Range(0.0f, 1.0f) < successProbNoItem) {
                 success = true;
-                qsh.setQuestDialogue(activeQuest.MessageSuccessNoItem.Replace("[item]", item.name));
+                qsh.setQuestDialogue(activeQuest.MessageSuccessNoItem);
                 success = true;
             } else {
-                qsh.setQuestDialogue(activeQuest.MessageFailNoItem.Replace("[item]", item.name));
+                qsh.setQuestDialogue(activeQuest.MessageFailNoItem);
                 success = false;
             }
         }
@@ -112,6 +112,7 @@ public class GameController : MonoBehaviour
         //questLog.remove()
         
         uI_Inventory.disableSelection();
+        Debug.Log("Score: " + successCount);
     }
 }
 
