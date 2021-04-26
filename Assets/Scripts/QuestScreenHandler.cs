@@ -49,6 +49,26 @@ public class QuestScreenHandler : MonoBehaviour
         //NoItemButton.enabled = false;
         //ItemButton.enabled=false;
     }
+    
+    public void winScreen()
+    {
+        questButton.gameObject.SetActive(false);
+        NoItemButton.gameObject.SetActive(false);
+        ItemButton.gameObject.SetActive(false);
+        questTitle.text = "Congratulations, hero.";
+        questDialogue.text = "Your seemingly endless task of helping the people of this village has become your new way of life. They welcomed you with open arms, and meet your every action with gratitude. \n\nBut...wasn't there something else you had to do? Maybe it will come back to you...";
+        questButtonText.GetComponent<Text>().text = "";
+    }
+    
+    public void loseScreen()
+    {
+        questButton.gameObject.SetActive(false);
+        NoItemButton.gameObject.SetActive(false);
+        ItemButton.gameObject.SetActive(false);
+        questTitle.text = "Well...";
+        questDialogue.text = "Your seemingly endless list of tasks has become too much for you. Without a shirt on your back or a coin to your name, you are now endebted to the people of this village, and fully reliant on their giving kindness.\n\nOh, and you didn't save the Royal Family either.";
+        questButtonText.GetComponent<Text>().text = "";
+    }
 
     public void noItemInstructions() {
         questDialogue.text = "";

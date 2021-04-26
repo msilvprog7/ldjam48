@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     public float successProbNoItem = 0.25f;
     private bool success;
     private int successCount = 0;
+    public const int successesToWin = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -113,6 +114,20 @@ public class GameController : MonoBehaviour
         
         uI_Inventory.disableSelection();
         Debug.Log("Score: " + successCount);
+        handleEndGame();
+    }
+
+    private void handleEndGame() {
+        // If the player has succeeded in a certain number of quests, they win
+        if (successCount >= successesToWin) {
+            qsh.winScreen();
+
+        }
+
+        // If the player has no items left, they lose
+        if (inventory.GetItemList().Count == 0) {
+            qsh.loseScreen();
+        }
     }
 }
 
