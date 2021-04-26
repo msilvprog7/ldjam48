@@ -110,6 +110,8 @@ public class GameController : MonoBehaviour
         qsh.initScreen();
         // Then remove quest from list
         //questLog.remove()
+        
+        uI_Inventory.disableSelection();
     }
 }
 
