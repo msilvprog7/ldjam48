@@ -114,17 +114,6 @@ public class GameController : MonoBehaviour
             qsh.setQuestButtonText("...");
         }
 
-        }
-
-        if (success) {
-            qsh.setQuestTitleText("Success!");
-            qsh.setQuestButtonText("Onward!");
-            successCount += 1;
-        } else {
-            qsh.setQuestTitleText("Quest Failed.");
-            qsh.setQuestButtonText("...");
-        }
-
         // Then prep for next quest by calling initScreen() on QuestScreenHandler object
         qsh.initScreen();
         // Then remove quest from list
