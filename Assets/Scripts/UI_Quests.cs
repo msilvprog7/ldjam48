@@ -33,7 +33,7 @@ public class UI_Quests : MonoBehaviour
     }
 
     // Updates QuestLog with Current QuestList
-    private void RefreshQuests()
+    public void RefreshQuests()
     {
         foreach (Quest quest in gameController.questLog.GetQuestList())
         {
