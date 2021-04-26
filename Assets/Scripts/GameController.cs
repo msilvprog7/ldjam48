@@ -70,10 +70,10 @@ public class GameController : MonoBehaviour
             Debug.Log("No Item Used");
             if (Random.Range(0.0f, 1.0f) < successProbNoItem) {
                 success = true;
-                qsh.setQuestDialogue(activeQuest.MessageSuccessNoItem);
+                qsh.setQuestDialogue(activeQuest.MessageSuccessNoItem.Replace("[item]", item.name));
                 success = true;
             } else {
-                qsh.setQuestDialogue(activeQuest.MessageFailNoItem);
+                qsh.setQuestDialogue(activeQuest.MessageFailNoItem.Replace("[item]", item.name));
                 success = false;
             }
         }
@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
         {
             // Item is found in list, score appropriately and remove from list
             Debug.Log("Used " + item.name + " and it was succesful!");
-            qsh.setQuestDialogue(activeQuest.MessageSuccessWithItem);
+            qsh.setQuestDialogue(activeQuest.MessageSuccessWithItem.Replace("[item]", item.name));
                 success = true;
         }
         else
@@ -89,10 +89,10 @@ public class GameController : MonoBehaviour
             // Item is not found in list, score appropriately and remove from list
             Debug.Log("Used " + item.name);
             if (Random.Range(0.0f, 1.0f) < successProbWrongItem) {
-                qsh.setQuestDialogue(activeQuest.MessageSuccessWrongItem);
+                qsh.setQuestDialogue(activeQuest.MessageSuccessWrongItem.Replace("[item]", item.name));
                 success = true;
             } else {
-                qsh.setQuestDialogue(activeQuest.MessageFailWithItem);
+                qsh.setQuestDialogue(activeQuest.MessageFailWithItem.Replace("[item]", item.name));
                 success = false;
             }
         }
