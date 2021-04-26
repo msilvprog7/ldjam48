@@ -1,0 +1,173 @@
+[33mcommit a60be286875d2340a104023eb2f35a4e5dc09096[m[33m ([m[1;36mHEAD -> [m[1;32mDelequesce/edit_new2[m[33m)[m
+Author: D-Winker <ddw4vn@virginia.edu>
+Date:   Mon Apr 26 18:48:17 2021 -0400
+
+    Revert "Revert "Revert "Merge branch 'ddw/edit_new2' into ddw/edit_new"""
+    
+    This reverts commit d45ded31ada398f69b59121bd19eafec4b5b2227.
+
+[33mcommit d45ded31ada398f69b59121bd19eafec4b5b2227[m
+Author: D-Winker <ddw4vn@virginia.edu>
+Date:   Mon Apr 26 18:46:07 2021 -0400
+
+    Revert "Revert "Merge branch 'ddw/edit_new2' into ddw/edit_new""
+    
+    This reverts commit b97fa723790c0e0a7474391b2cd5c5e79f51aa0c.
+
+[33mcommit 4868ddf069d592abe69ef5f8d67ce017d18f30ab[m[33m ([m[1;31morigin/ddw/edit_new2[m[33m, [m[1;31morigin/ddw/edit_new[m[33m, [m[1;31morigin/Delequesce/edit_new2[m[33m, [m[1;32mddw/edit_new2[m[33m, [m[1;32mddw/edit_new[m[33m)[m
+Author: D-Winker <ddw4vn@virginia.edu>
+Date:   Mon Apr 26 18:35:24 2021 -0400
+
+    Uh...changed nothing
+    
+    Really, like, that code that was removed is already there.
+
+[33mcommit 525aa9aacf98a024397c1dc22e08fe4c8f065e6f[m
+Author: D-Winker <ddw4vn@virginia.edu>
+Date:   Mon Apr 26 17:31:34 2021 -0400
+
+    Undoing changes(?)
+    
+    uh, undo overwrite?
+
+[33mcommit b97fa723790c0e0a7474391b2cd5c5e79f51aa0c[m
+Author: D-Winker <ddw4vn@virginia.edu>
+Date:   Mon Apr 26 17:22:29 2021 -0400
+
+    Revert "Merge branch 'ddw/edit_new2' into ddw/edit_new"
+    
+    This reverts commit 5bf49217c3caa7684f2f3b87bd10e9cbecbf42e8, reversing
+    changes made to 289fec38849610e9cb801b4145d6f9869cda2bd1.
+    
+    Undoing merge. Need to undo commit before merge.
+
+[33mcommit 5bf49217c3caa7684f2f3b87bd10e9cbecbf42e8[m
+Merge: 289fec3 9f0a059
+Author: D-Winker <ddw4vn@virginia.edu>
+Date:   Mon Apr 26 16:58:41 2021 -0400
+
+    Merge branch 'ddw/edit_new2' into ddw/edit_new
+
+[33mcommit 9f0a0590c3efcdcdfc21f8c94f8d554a1e4e87d3[m
+Author: Chris Delianides <cad115@case.edu>
+Date:   Sun Apr 25 22:41:09 2021 -0400
+
+    Item and Quest Removal
+
+[33mcommit 289fec38849610e9cb801b4145d6f9869cda2bd1[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 21:56:35 2021 -0400
+
+    Music now plays at the appropriate times.
+
+[33mcommit 568595c29cda7db8bf19d6af913f92c0fbcba09f[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 21:43:13 2021 -0400
+
+    Removes quotation marks and strips whitespace when reading in quests and quest related information. The correct item is now recognized when used.
+
+[33mcommit 8574329d3aac588b38bf177ab602fdb9a742c984[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 21:26:01 2021 -0400
+
+    At the end of the game, the quest and inventory panels are now taken away.
+
+[33mcommit 34c97f1ddb616eb205b7643006c0356a31731732[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 21:22:43 2021 -0400
+
+    Win screen works. Lose screen should, but it's untested. (Oh, but you can keep questing after you win...need to disable the quest screen.)
+
+[33mcommit 37ed24f2422431005c9921ffb372de0ab8304622[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 20:51:20 2021 -0400
+
+    Fixed an error I added (trying to use the 'item' object in the case where an item isn't used).
+
+[33mcommit eae7f0d5a313b847aba623a3d7656415d9c0d5e5[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 20:45:34 2021 -0400
+
+    Inventory is now disabled once a quest is completed.
+
+[33mcommit aa70f854c028d7e66514649974b77918e1c62ea2[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 20:42:47 2021 -0400
+
+    Fixed quest message grammatical errors (related to each item), and updated the excel sheet to the completed version.
+
+[33mcommit fdc8c46cc33969ddb46849727c6221356e142dbb[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 20:33:55 2021 -0400
+
+    After quest messages now replace '[item]' with the item used. (as needed).
+
+[33mcommit 87e26fd3a1397feff5b5d104f8aa157a22ef7978[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 20:27:58 2021 -0400
+
+    Quests are now 'scored' and success/failure messages display as appropriate.
+
+[33mcommit b28e1ea5d1120d85e3e59b555f51e2547cae4b8d[m[33m ([m[1;31morigin/Delequesce/edit_new[m[33m, [m[1;32mDelequesce/edit_new[m[33m)[m
+Author: Chris Delianides <cad115@case.edu>
+Date:   Sun Apr 25 18:34:25 2021 -0400
+
+    Enabled Quest Selection, Item usage, and Quest Completion
+
+[33mcommit e253ff8190d09b8393ae5280b5d8c2a5959a26cf[m[33m ([m[1;31morigin/ddw/edit[m[33m)[m
+Author: Daniel Winker <D-Winker.ddw4vn@virginia.edu>
+Date:   Sun Apr 25 16:10:34 2021 -0400
+
+    Added 'main' quest panel.
+
+[33mcommit c9bdf5e42eb5fcd483537697e41cd44af8b7432f[m[33m ([m[1;31morigin/Delequesce/edit[m[33m)[m
+Author: Chris Delianides <cad115@case.edu>
+Date:   Sun Apr 25 14:34:33 2021 -0400
+
+    Script Restructuring for Items and Quests
+
+[33mcommit b62dd4d4170e98ae7185dbd455da2769762127f7[m
+Author: Chris Delianides <cad115@case.edu>
+Date:   Sun Apr 25 00:09:54 2021 -0400
+
+    Inventory and Quest SystemsAdded
+
+[33mcommit a2e6a2cf9b215d8ce41b5a9f1562ae71f43212a3[m
+Author: Michael Snider <msilvprog7@gmail.com>
+Date:   Sat Apr 24 17:23:29 2021 -0700
+
+    Add scene LD48IntroAndEnd and merge with SampleScene (#6)
+
+[33mcommit 6127c771bae3ddacab482f26869010a7b0a1b19a[m
+Author: Michael Snider <msilvprog7@gmail.com>
+Date:   Sat Apr 24 14:27:54 2021 -0700
+
+    Add loop music and Sounds to manage fade in/out of looped tracks (#5)
+
+[33mcommit d245634964de07684d715db52b3402b8995cefbe[m
+Author: Michael Snider <msilvprog7@gmail.com>
+Date:   Sat Apr 24 11:41:06 2021 -0700
+
+    Parse quests from txt (#4)
+    
+    * Parse quests from txt
+    
+    * Add quest editing to README
+
+[33mcommit 2595f3429194d5a9cf5eca430e98a7f273331852[m
+Author: Delequesce <39247104+Delequesce@users.noreply.github.com>
+Date:   Sat Apr 24 13:16:07 2021 -0400
+
+    Update README.md (#3)
+
+[33mcommit a4e83f55729cab187096a3f6c907eb1212190a0f[m
+Author: Michael Snider <msilvprog7@gmail.com>
+Date:   Sat Apr 24 09:26:20 2021 -0700
+
+    Create Unity Project (#1)
+
+[33mcommit 7d2918d0f4caa7fa31c7f57f4cfa83c612dfa47f[m
+Author: Michael Snider <msilvprog7@gmail.com>
+Date:   Sat Apr 24 09:11:49 2021 -0700
+
+    Initial commit

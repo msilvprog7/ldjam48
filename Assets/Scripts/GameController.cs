@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public Inventory inventory;
     public GameObject SlotHolder; //Has UI_Inventory Script
     public UI_Inventory uI_Inventory;
+    public GameObject QuestHolder; //Has UI_Inventory Script
+    public UI_Quests uI_Quests;
     public QuestLog questLog;
     public bool questRunning {get; set;} = false; // Let's you know if a quest is active
     public Quest activeQuest;
@@ -49,6 +51,7 @@ public class GameController : MonoBehaviour
         qsh = MainQuestScreen.GetComponent<QuestScreenHandler>();
         snd = SoundManager.GetComponent<Sounds>();
         uI_Inventory = SlotHolder.GetComponent<UI_Inventory>();
+        uI_Quests = QuestHolder.GetComponent<UI_Quests>();
     }
 
     void readQuests()
@@ -90,11 +93,28 @@ public class GameController : MonoBehaviour
             // Item is found in list, score appropriately and remove from list
             Debug.Log("Used " + item.name + " and it was succesful!");
             qsh.setQuestDialogue(activeQuest.MessageSuccessWithItem.Replace("[item]", item.name));
-                success = true;
+            success = true;
+            
+            // Remove Item
+            //Debug.Log(inventory.GetItemList().Count);
+            var it = inventory.GetItemList().Find(it => it.name == item.name);
+            inventory.GetItemList().Remove(it);
+            uI_Inventory.RemoveElement(it);
+            uI_Inventory.RefreshInventory();
+            //Debug.Log(inventory.GetItemList().Count);
         }
         else
         {
             // Item is not found in list, score appropriately and remove from list
+            Debug.Log("Used " + item.name + " and it was unsuccesful!");
+            // Remove Item
+            //Debug.Log(inventory.GetItemList().Count);
+            var it = inventory.GetItemList().Find(it => it.name == item.name);
+            inventory.GetItemList().Remove(it);
+            uI_Inventory.RemoveElement(it);
+            //Debug.Log(inventory.GetItemList().Count);
+            uI_Inventory.RefreshInventory();
+
             Debug.Log("Used " + item.name);
             if (Random.Range(0.0f, 1.0f) < successProbWrongItem) {
                 qsh.setQuestDialogue(activeQuest.MessageSuccessWrongItem.Replace("[item]", item.name));
@@ -113,6 +133,10 @@ public class GameController : MonoBehaviour
             qsh.setQuestTitleText("Quest Failed.");
             qsh.setQuestButtonText("...");
         }
+        // Update UI
+        questLog.GetQuestList().Remove(activeQuest);
+        uI_Quests.RemoveElement(activeQuest);
+        uI_Quests.RefreshQuests();
 
         // Then prep for next quest by calling initScreen() on QuestScreenHandler object
         qsh.initScreen();

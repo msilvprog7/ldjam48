@@ -43,4 +43,9 @@ public class QuestSlotHandler : MonoBehaviour
     {
         this.quest = quest;
     }
+
+    public void destroyObject()
+    {
+        Destroy(gameObject);
+    }
 }

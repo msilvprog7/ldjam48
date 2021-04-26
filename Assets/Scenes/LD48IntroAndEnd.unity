@@ -1864,6 +1864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlotHolder: {fileID: 1204304250}
   uI_Inventory: {fileID: 0}
+  QuestHolder: {fileID: 1321976983}
+  uI_Quests: {fileID: 0}
   MainQuestScreen: {fileID: 1204008080}
   SoundManager: {fileID: 57564205}
   snd: {fileID: 0}

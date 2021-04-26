@@ -18,7 +18,17 @@ public class UI_Inventory : MonoBehaviour
         RefreshInventory();
     }
 
-    private void RefreshInventory()
+    public void RemoveElement(Item it)
+    {
+        //Find ItemSlotTemplate gameObject that has item field equal to it
+        ItemSlotHandler[] allChildren = gameObject.GetComponentsInChildren<ItemSlotHandler>();
+        foreach(ItemSlotHandler ish in allChildren)
+        {
+            ish.destroyObject();
+        }
+    }
+    
+    public void RefreshInventory()
     {
         foreach (Item item in gameController.inventory.GetItemList())
         {
