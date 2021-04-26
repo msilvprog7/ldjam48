@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &57564206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,6 +1865,8 @@ MonoBehaviour:
   SlotHolder: {fileID: 1204304250}
   uI_Inventory: {fileID: 0}
   MainQuestScreen: {fileID: 1204008080}
+  SoundManager: {fileID: 57564205}
+  snd: {fileID: 0}
   InventoryPanel: {fileID: 2061471297}
   QuestLogPanel: {fileID: 1413218356}
   successProbWrongItem: 0.5
@@ -4061,6 +4063,7 @@ MonoBehaviour:
   mainQuestScreen: {fileID: 1204008080}
   InventoryPanel: {fileID: 2061471297}
   QuestLogPanel: {fileID: 1413218356}
+  SoundManager: {fileID: 57564205}
 --- !u!1 &1607832243
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class Sounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         // Test the behavior by switching tracks every 5s
         this.seconds += Time.deltaTime;
         if (this.seconds >= 5)
@@ -31,9 +32,10 @@ public class Sounds : MonoBehaviour
             this.seconds = 0;
             this.StartLoop(this.loop[(this.loop.FindIndex(0, a => a.isPlaying) + 1) % this.loop.Count].clip.name);
         }
+        */
     }
 
-    void StartLoop(string name)
+    public void StartLoop(string name)
     {
         var current = this.loop.FirstOrDefault(a => a.isPlaying);
         if (current != null)

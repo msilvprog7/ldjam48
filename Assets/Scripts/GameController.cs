@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
     public Quest activeQuest;
     public GameObject MainQuestScreen;
     private QuestScreenHandler qsh;
+    
+    public GameObject SoundManager;
+    public Sounds snd;
 
     public GameObject InventoryPanel;
     public GameObject QuestLogPanel;
@@ -44,6 +47,7 @@ public class GameController : MonoBehaviour
         // Generate QuestLog Object
         questLog = new QuestLog(masterQuestList);
         qsh = MainQuestScreen.GetComponent<QuestScreenHandler>();
+        snd = SoundManager.GetComponent<Sounds>();
         uI_Inventory = SlotHolder.GetComponent<UI_Inventory>();
     }
 
@@ -123,6 +127,7 @@ public class GameController : MonoBehaviour
     private void handleEndGame() {
         // If the player has succeeded in a certain number of quests, they win
         if (successCount >= successesToWin) {
+            snd.StartLoop("Success");
             qsh.winScreen();
             InventoryPanel.SetActive(false);
             QuestLogPanel.SetActive(false);
@@ -130,6 +135,7 @@ public class GameController : MonoBehaviour
 
         // If the player has no items left, they lose
         if (inventory.GetItemList().Count == 0) {
+            snd.StartLoop("Fail");
             qsh.loseScreen();
             InventoryPanel.SetActive(false);
             QuestLogPanel.SetActive(false);

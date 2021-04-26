@@ -8,6 +8,12 @@ public class StartButtonBehavior : MonoBehaviour
    public GameObject mainQuestScreen;
    public GameObject InventoryPanel;
    public GameObject QuestLogPanel;
+   public GameObject SoundManager;
+   private Sounds snd;
+
+   void Start() {
+      snd = SoundManager.GetComponent<Sounds>();
+   }
 
    public void OnButtonPress(){
       firstQuestScreen.SetActive(false);
@@ -15,5 +21,6 @@ public class StartButtonBehavior : MonoBehaviour
       InventoryPanel.SetActive(true);
       QuestLogPanel.SetActive(true);
       mainQuestScreen.GetComponent<QuestScreenHandler>().initScreen();
+      snd.StartLoop("Quest");
    }
 }
