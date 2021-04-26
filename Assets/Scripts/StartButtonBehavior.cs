@@ -15,8 +15,7 @@ public class StartButtonBehavior : MonoBehaviour
       snd = SoundManager.GetComponent<Sounds>();
    }
 
-   void OnButtonPress()
-   {
+   public void OnButtonPress(){
       firstQuestScreen.SetActive(false);
       //mainQuestScreen.SetActive(true);
       InventoryPanel.SetActive(true);

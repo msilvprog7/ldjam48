@@ -21,18 +21,9 @@ public class UI_Quests : MonoBehaviour
 
         RefreshQuests();
     }
-    public void RemoveElement(Quest qu)
-    {
-        //Find ItemSlotTemplate gameObject that has item field equal to it
-        QuestSlotHandler[] allChildren = gameObject.GetComponentsInChildren<QuestSlotHandler>();
-        foreach(QuestSlotHandler qsh in allChildren)
-        {
-            qsh.destroyObject();
-        }
-    }
 
     // Updates QuestLog with Current QuestList
-    public void RefreshQuests()
+    private void RefreshQuests()
     {
         foreach (Quest quest in gameController.questLog.GetQuestList())
         {
