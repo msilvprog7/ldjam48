@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class QuestChoiceButtonHandler : MonoBehaviour
 {
     public GameController gameController;
+    public GameObject MainQuestScreen;
+    private QuestScreenHandler qsh;
     // Start is called before the first frame update
     void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         gameObject.GetComponent<Button>().onClick.AddListener(delegate {onClick(); });
+        qsh = MainQuestScreen.GetComponent<QuestScreenHandler>();
     }
 
     void onClick()
@@ -24,6 +27,7 @@ public class QuestChoiceButtonHandler : MonoBehaviour
         {
             // Player wishes to use an item
             Debug.Log("Please Select an Item");
+            qsh.itemInstructions();
             // Call UI_Inventory method to enable all buttons 
             gameController.uI_Inventory.enableSelection();
         }

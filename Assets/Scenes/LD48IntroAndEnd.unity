@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &57564206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +545,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57564205}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c128e465f9623d842b76a0892b4ba21c, type: 3}
@@ -2888,7 +2888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e78aa9fb2e704fa88b886bb1acea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 466017371}
+  MainQuestScreen: {fileID: 1204008080}
 --- !u!1 &1203608093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,7 +5273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1937574516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5599,7 +5600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e78aa9fb2e704fa88b886bb1acea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 466017371}
+  MainQuestScreen: {fileID: 1204008080}
 --- !u!1 &2100494576
 GameObject:
   m_ObjectHideFlags: 0

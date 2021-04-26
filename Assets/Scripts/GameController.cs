@@ -22,6 +22,12 @@ public class GameController : MonoBehaviour
     private static char ListDelimiter = ',';
     private static int HeaderLines = 2;
 
+    //
+    public float successProbWrongItem = 0.5f;
+    public float successProbNoItem = 0.25f;
+    private bool success;
+    private int successCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,54 +68,48 @@ public class GameController : MonoBehaviour
         {
             // No Item Used
             Debug.Log("No Item Used");
+            if (Random.Range(0.0f, 1.0f) < successProbNoItem) {
+                success = true;
+                qsh.setQuestDialogue(activeQuest.MessageSuccessNoItem);
+                success = true;
+            } else {
+                qsh.setQuestDialogue(activeQuest.MessageFailNoItem);
+                success = false;
+            }
         }
         else if(activeQuest.SuccessItems.Contains(item.name))
         {
             // Item is found in list, score appropriately and remove from list
             Debug.Log("Used " + item.name + " and it was succesful!");
+            qsh.setQuestDialogue(activeQuest.MessageSuccessWithItem);
+                success = true;
         }
         else
         {
             // Item is not found in list, score appropriately and remove from list
-            Debug.Log("Used " + item.name + " and it was unsuccesful!");
+            Debug.Log("Used " + item.name);
+            if (Random.Range(0.0f, 1.0f) < successProbWrongItem) {
+                qsh.setQuestDialogue(activeQuest.MessageSuccessWrongItem);
+                success = true;
+            } else {
+                qsh.setQuestDialogue(activeQuest.MessageFailWithItem);
+                success = false;
+            }
+        }
+
+        if (success) {
+            qsh.setQuestTitleText("Success!");
+            qsh.setQuestButtonText("Onward!");
+            successCount += 1;
+        } else {
+            qsh.setQuestTitleText("Quest Failed.");
+            qsh.setQuestButtonText("...");
         }
 
         // Then prep for next quest by calling initScreen() on QuestScreenHandler object
         qsh.initScreen();
         // Then remove quest from list
         //questLog.remove()
-
-        // Reference Code from DDW
-/*
-
-            if (quest.SuccessItems.Contains("")) {
-                success = true;
-                questDialogue.text = quest.MessageSuccessWithItem;
-            } else if (!item.Equals("")) {  // Check if they have an item
-                if (Random.Range(0.0f, 1.0f) < successProbBadItem) {
-                    success = true;
-                    questDialogue.text = quest.MessageSuccessWrongItem;
-                } else {
-                    questDialogue.text = quest.MessageFailWithItem;
-                }
-            } else {  // The no item case
-                if (Random.Range(0.0f, 1.0f) < successProbNoItem) {
-                    success = true;
-                    questDialogue.text = quest.MessageSuccessNoItem;
-                } else {
-                    questDialogue.text = quest.MessageFailNoItem;
-                }
-            }
-            if (success) {
-                questTitle.text = "Success!";
-                questButtonText.text = "Onward!";
-            } else {
-                questTitle.text = "Quest Failed.";
-                questButtonText.text = "...";
-            }
-            questComplete = true;
-        }
-    }*/
     }
 }
 

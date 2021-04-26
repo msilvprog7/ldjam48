@@ -32,7 +32,7 @@ public class QuestScreenHandler : MonoBehaviour
     public void startQuest()
     {
         gameController.questRunning = true;
-        questDialogue.text = "Lorem Ipsum?";
+        questDialogue.text = "";
         questButton.gameObject.SetActive(false);
         questButton.enabled = false;
         questButton.interactable = false;
@@ -43,11 +43,32 @@ public class QuestScreenHandler : MonoBehaviour
     {
         gameObject.SetActive(true);
         //Debug.Log("Made It");
-        questButton.gameObject.SetActive(true);
+        questButton.gameObject.SetActive(false);
         NoItemButton.gameObject.SetActive(false);
         ItemButton.gameObject.SetActive(false);
         //NoItemButton.enabled = false;
         //ItemButton.enabled=false;
+    }
+
+    public void noItemInstructions() {
+        questDialogue.text = "";
+    }
+
+    public void itemInstructions() {
+        questDialogue.text = "Please select an item";
+    }
+
+    public void setQuestDialogue(string dlg) {
+        questDialogue.text = dlg;
+    }
+
+    public void setQuestButtonText(string txt) {
+        questButtonText.GetComponent<Text>().text = txt;
+        questButton.gameObject.SetActive(true);
+    }
+
+    public void setQuestTitleText(string txt) {
+        questTitle.text = txt;
     }
 
 }
