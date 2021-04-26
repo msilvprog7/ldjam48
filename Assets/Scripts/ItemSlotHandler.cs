@@ -35,4 +35,9 @@ public class ItemSlotHandler : MonoBehaviour
         buttonState = state;
         //gameObject.GetComponent<Button>().interactable = state;
     }
+
+    public void destroyObject()
+    {
+        Destroy(gameObject);
+    }
 }
