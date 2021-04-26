@@ -24,15 +24,17 @@ public class GameController : MonoBehaviour
     public GameObject QuestLogPanel;
 
     // Reading Quest List
-    public List<Quest> masterQuestList { get; } = new List<Quest>();
+    public List<Quest> masterQuestList { get; set;} = new List<Quest>();
+    public List<Item> masterItemList = new List<Item>();
     private static string Filename = "Assets\\Scripts\\Quests.txt";
     private static char Delimiter = '\t';
     private static char ListDelimiter = ',';
     private static int HeaderLines = 2;
+    private List<string> tempItemList;
 
     //
-    public float successProbWrongItem = 0.5f;
-    public float successProbNoItem = 0.25f;
+    public float successProbWrongItem = 0.35f;
+    public float successProbNoItem = 0.20f;
     private bool success;
     private int successCount = 0;
     public int successesToWin = 10;
@@ -52,6 +54,13 @@ public class GameController : MonoBehaviour
         snd = SoundManager.GetComponent<Sounds>();
         uI_Inventory = SlotHolder.GetComponent<UI_Inventory>();
         uI_Quests = QuestHolder.GetComponent<UI_Quests>();
+        tempItemList = new List<string>(){"Hoe", "Shovel", "Garden", "Fork", "Trowel", "Seeds", "Basket", "Shears", "Bucket", "Watering Can", "Pot", "Pan", "Steak", "Chicken", "Paintbrush", "Worms", "Fishing Rod", "Net", "Shirt", "Hat", "Pants", "Hammer", "Saw", "Shoes", "Corn"};
+        foreach(string item in tempItemList)
+        {
+            Item tempItem = new Item(item);
+            masterItemList.Add(tempItem);
+        }
+        
     }
 
     void readQuests()
@@ -96,24 +105,16 @@ public class GameController : MonoBehaviour
             success = true;
             
             // Remove Item
-            //Debug.Log(inventory.GetItemList().Count);
             var it = inventory.GetItemList().Find(it => it.name == item.name);
             inventory.GetItemList().Remove(it);
-            uI_Inventory.RemoveElement(it);
-            uI_Inventory.RefreshInventory();
-            //Debug.Log(inventory.GetItemList().Count);
         }
         else
         {
             // Item is not found in list, score appropriately and remove from list
             Debug.Log("Used " + item.name + " and it was unsuccesful!");
             // Remove Item
-            //Debug.Log(inventory.GetItemList().Count);
             var it = inventory.GetItemList().Find(it => it.name == item.name);
             inventory.GetItemList().Remove(it);
-            uI_Inventory.RemoveElement(it);
-            //Debug.Log(inventory.GetItemList().Count);
-            uI_Inventory.RefreshInventory();
 
             Debug.Log("Used " + item.name);
             if (Random.Range(0.0f, 1.0f) < successProbWrongItem) {
@@ -129,12 +130,20 @@ public class GameController : MonoBehaviour
             qsh.setQuestTitleText("Success!");
             qsh.setQuestButtonText("Onward!");
             successCount += 1;
+            //Call UI_Quests.AddRandomItem
+            Item randItem = masterItemList[Random.Range(0, masterItemList.Count)];
+            Debug.Log(randItem.name);
+            inventory.AddItem(randItem);
+            uI_Inventory.RemoveElement(null);
+            uI_Inventory.RefreshInventory();
         } else {
             qsh.setQuestTitleText("Quest Failed.");
             qsh.setQuestButtonText("...");
         }
         // Update UI
         questLog.GetQuestList().Remove(activeQuest);
+        questLog.AddQuest(masterQuestList[Random.Range(0, masterQuestList.Count)]);
+        questLog.AddQuest(masterQuestList[Random.Range(0, masterQuestList.Count)]);
         uI_Quests.RemoveElement(activeQuest);
         uI_Quests.RefreshQuests();
 
