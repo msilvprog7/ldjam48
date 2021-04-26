@@ -9,7 +9,8 @@ public class StartButtonBehavior : MonoBehaviour
    public GameObject InventoryPanel;
    public GameObject QuestLogPanel;
 
-   public void OnButtonPress(){
+   void OnButtonPress()
+   {
       firstQuestScreen.SetActive(false);
       //mainQuestScreen.SetActive(true);
       InventoryPanel.SetActive(true);

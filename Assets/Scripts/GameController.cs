@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public Inventory inventory;
     public GameObject SlotHolder; //Has UI_Inventory Script
     public UI_Inventory uI_Inventory;
+     public GameObject QuestHolder; //Has UI_Inventory Script
+    public UI_Quests uI_Quests;
     public QuestLog questLog;
     public bool questRunning {get; set;} = false; // Let's you know if a quest is active
     public Quest activeQuest;
@@ -21,12 +23,6 @@ public class GameController : MonoBehaviour
     private static char Delimiter = '\t';
     private static char ListDelimiter = ',';
     private static int HeaderLines = 2;
-
-    //
-    public float successProbWrongItem = 0.5f;
-    public float successProbNoItem = 0.25f;
-    private bool success;
-    private int successCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +37,7 @@ public class GameController : MonoBehaviour
         questLog = new QuestLog(masterQuestList);
         qsh = MainQuestScreen.GetComponent<QuestScreenHandler>();
         uI_Inventory = SlotHolder.GetComponent<UI_Inventory>();
+        uI_Quests = QuestHolder.GetComponent<UI_Quests>();
     }
 
     void readQuests()
@@ -68,51 +65,37 @@ public class GameController : MonoBehaviour
         {
             // No Item Used
             Debug.Log("No Item Used");
-            if (Random.Range(0.0f, 1.0f) < successProbNoItem) {
-                success = true;
-                qsh.setQuestDialogue(activeQuest.MessageSuccessNoItem);
-                success = true;
-            } else {
-                qsh.setQuestDialogue(activeQuest.MessageFailNoItem);
-                success = false;
-            }
         }
         else if(activeQuest.SuccessItems.Contains(item.name))
         {
             // Item is found in list, score appropriately and remove from list
             Debug.Log("Used " + item.name + " and it was succesful!");
-            qsh.setQuestDialogue(activeQuest.MessageSuccessWithItem.Replace("[item]", item.name));
-                success = true;
+            // Remove Item
+            //Debug.Log(inventory.GetItemList().Count);
+            var it = inventory.GetItemList().Find(it => it.name == item.name);
+            inventory.GetItemList().Remove(it);
+            uI_Inventory.RemoveElement(it);
+            uI_Inventory.RefreshInventory();
+            //Debug.Log(inventory.GetItemList().Count);
         }
         else
         {
             // Item is not found in list, score appropriately and remove from list
-            Debug.Log("Used " + item.name);
-            if (Random.Range(0.0f, 1.0f) < successProbWrongItem) {
-                qsh.setQuestDialogue(activeQuest.MessageSuccessWrongItem.Replace("[item]", item.name));
-                success = true;
-            } else {
-                qsh.setQuestDialogue(activeQuest.MessageFailWithItem.Replace("[item]", item.name));
-                success = false;
-            }
+            Debug.Log("Used " + item.name + " and it was unsuccesful!");
+            // Remove Item
+            //Debug.Log(inventory.GetItemList().Count);
+            var it = inventory.GetItemList().Find(it => it.name == item.name);
+            inventory.GetItemList().Remove(it);
+            uI_Inventory.RemoveElement(it);
+            //Debug.Log(inventory.GetItemList().Count);
+            uI_Inventory.RefreshInventory();
         }
-
-        if (success) {
-            qsh.setQuestTitleText("Success!");
-            qsh.setQuestButtonText("Onward!");
-            successCount += 1;
-        } else {
-            qsh.setQuestTitleText("Quest Failed.");
-            qsh.setQuestButtonText("...");
-        }
-
+        // Update UI
+        questLog.GetQuestList().Remove(activeQuest);
+        uI_Quests.RemoveElement(activeQuest);
+        uI_Quests.RefreshQuests();
         // Then prep for next quest by calling initScreen() on QuestScreenHandler object
         qsh.initScreen();
-        // Then remove quest from list
-        //questLog.remove()
-        
-        uI_Inventory.disableSelection();
-        Debug.Log("Score: " + successCount);
     }
 }
 
