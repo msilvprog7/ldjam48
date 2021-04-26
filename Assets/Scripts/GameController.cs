@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public GameObject MainQuestScreen;
     private QuestScreenHandler qsh;
 
+    public GameObject InventoryPanel;
+    public GameObject QuestLogPanel;
+
     // Reading Quest List
     public List<Quest> masterQuestList { get; } = new List<Quest>();
     private static string Filename = "Assets\\Scripts\\Quests.txt";
@@ -27,7 +30,7 @@ public class GameController : MonoBehaviour
     public float successProbNoItem = 0.25f;
     private bool success;
     private int successCount = 0;
-    public const int successesToWin = 10;
+    public int successesToWin = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -121,12 +124,15 @@ public class GameController : MonoBehaviour
         // If the player has succeeded in a certain number of quests, they win
         if (successCount >= successesToWin) {
             qsh.winScreen();
-
+            InventoryPanel.SetActive(false);
+            QuestLogPanel.SetActive(false);
         }
 
         // If the player has no items left, they lose
         if (inventory.GetItemList().Count == 0) {
             qsh.loseScreen();
+            InventoryPanel.SetActive(false);
+            QuestLogPanel.SetActive(false);
         }
     }
 }

@@ -1865,6 +1865,11 @@ MonoBehaviour:
   SlotHolder: {fileID: 1204304250}
   uI_Inventory: {fileID: 0}
   MainQuestScreen: {fileID: 1204008080}
+  InventoryPanel: {fileID: 2061471297}
+  QuestLogPanel: {fileID: 1413218356}
+  successProbWrongItem: 0.5
+  successProbNoItem: 0.25
+  successesToWin: 10
 --- !u!4 &466017372
 Transform:
   m_ObjectHideFlags: 0
