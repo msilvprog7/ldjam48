@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     // Reading Quest List
     public List<Quest> masterQuestList { get; set;} = new List<Quest>();
     public List<Item> masterItemList = new List<Item>();
-    private static string Filename = "Assets\\Scripts\\Quests.txt";
+    //private static string Filename = "Assets\\Scripts\\Quests.txt";
     private static char Delimiter = '\t';
     private static char ListDelimiter = ',';
     private static int HeaderLines = 2;
@@ -46,7 +46,13 @@ public class GameController : MonoBehaviour
         inventory = new Inventory();
 
         // Read in All Quests from CSV
-        readQuests();
+        TextAsset textFile = Resources.Load<TextAsset>("Text/Quests");
+        if(textFile is null)
+        {
+            Debug.Log("Cannot Load Quests.txt");
+        }
+        //Debug.Log(textFile.text);
+        readQuests(textFile);
 
         // Generate QuestLog Object
         questLog = new QuestLog(masterQuestList);
@@ -63,15 +69,26 @@ public class GameController : MonoBehaviour
         
     }
 
-    void readQuests()
+    void readQuests(TextAsset textFile)
     {
+        var i = 0;
         masterQuestList.Clear();
-        foreach (var line in File.ReadAllLines(Filename).Skip(HeaderLines))
+        string[] lines = textFile.text.Split("\n"[0]);
+        foreach (var line in lines)
         {
+            Debug.Log(i);
+            i++;
             var row = line.Split(Delimiter);
             var quest = new Quest(row, ListDelimiter);
             masterQuestList.Add(quest);
         }
+        /*foreach (var line in File.ReadAllLines(Filename)textFile.text.Skip(HeaderLines))
+        {
+            var row = line.Split(Delimiter);
+            var quest = new Quest(row, ListDelimiter);
+            masterQuestList.Add(quest);
+        }*/
+        Debug.Log(masterQuestList.Count);
     }
 
     public void SetActiveQuest(Quest quest)
